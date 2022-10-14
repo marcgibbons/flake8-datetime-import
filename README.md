@@ -1,6 +1,9 @@
 # flake8-datetime-import
 
 <!-- markdownlint-disable MD013 -->
+[![PyPI version](https://badge.fury.io/py/flake8-datetime-import.svg)](https://badge.fury.io/py/flake8-datetime-import)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/flake8-datetime-import)
+![PyPI - Wheel](https://img.shields.io/pypi/wheel/flake8-datetime-import)
 [![codecov](https://codecov.io/gh/marcgibbons/flake8-datetime-import/branch/main/graph/badge.svg?token=Q7FLD0X8IU)](https://codecov.io/gh/marcgibbons/flake8-datetime-import)
 [![pre-commit.ci status](https://results.pre-commit.ci/badge/github/marcgibbons/flake8-datetime-import/main.svg)](https://results.pre-commit.ci/latest/github/marcgibbons/flake8-datetime-import/main)
 <!-- markdownlint-enable -->

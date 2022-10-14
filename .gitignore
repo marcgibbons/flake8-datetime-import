@@ -2,5 +2,6 @@
 .coverage
 .tox/
 build/
+coverage.xml
 dist/
 htmlcov/

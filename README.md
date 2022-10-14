@@ -1,5 +1,10 @@
 # flake8-datetime-import
 
+<!-- markdownlint-disable MD013 -->
+[![codecov](https://codecov.io/gh/marcgibbons/flake8-datetime-import/branch/main/graph/badge.svg?token=Q7FLD0X8IU)](https://codecov.io/gh/marcgibbons/flake8-datetime-import)
+[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/marcgibbons/flake8-datetime-import/main.svg)](https://results.pre-commit.ci/latest/github/marcgibbons/flake8-datetime-import/main)
+<!-- markdownlint-enable -->
+
 `flake8-datetime-import` is an opinionated plugin which aims to reduce
 confusing or an inconsistent use of Python's `datetime` module. It checks that
 `datetime` and `time` are imported and aliased as modules like:

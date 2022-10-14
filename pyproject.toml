@@ -16,6 +16,9 @@ dev = [
 gh = [
     "tox-gh"
 ]
+build = [
+    "build"
+]
 
 [build-system]
 requires = ["setuptools"]

@@ -17,12 +17,13 @@ jobs:
           - '3.10'
           - '3.7'
     steps:
+      - uses: actions/checkout@v3
+
       - name: Setup python for test ${{ matrix.py }}
         uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.py }}
-
-      - uses: actions/checkout@v3
+          cache: pip
 
       - name: Install
         run: pip install -e ".[dev,gh]"
@@ -35,14 +36,3 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           verbose: true
-
-  build:
-    if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags')
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Install build
-        run: pip install build
-
-      - name: Build dist
-        run: python -m -build

@@ -10,6 +10,7 @@ keywords = [
     "time",
     "qa",
 ]
+dynamic = ["version"]
 classifiers = [
     "Development Status :: 5 - Production/Stable",
     "Environment :: Console",
@@ -27,7 +28,6 @@ classifiers = [
     "Topic :: Software Development :: Libraries :: Python Modules",
     "Topic :: Software Development :: Quality Assurance",
 ]
-version = "0.1.0-alpha1"
 requires-python = ">=3.7"
 dependencies = [
     'importlib-metadata>=0.9; python_version<"3.8"',
@@ -52,8 +52,14 @@ build = [
 ]
 
 [build-system]
-requires = ["setuptools"]
+requires = [
+    "setuptools>=58",
+    "setuptools_scm[toml]>=7",
+]
 build-backend = "setuptools.build_meta"
+
+
+[tool.setuptools_scm]
 
 [tool.black]
 line-length = 79

@@ -6,8 +6,8 @@
 <!-- markdownlint-enable -->
 
 `flake8-datetime-import` is an opinionated plugin which aims to reduce
-confusing or an inconsistent use of Python's `datetime` module. It checks that
-`datetime` and `time` are imported and aliased as modules like:
+confusing or inconsistent usage of Python's `datetime` module. It checks that
+`datetime` and `time` are imported as modules and aliased like:
 
 ```python
 import datetime as dt

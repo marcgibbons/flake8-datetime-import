@@ -13,6 +13,9 @@ dev = [
     "tox",
     "pre-commit",
 ]
+gh = [
+    "tox-gh"
+]
 
 [build-system]
 requires = ["setuptools"]

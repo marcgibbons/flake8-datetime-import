@@ -14,7 +14,10 @@ jobs:
     strategy:
       matrix:
         py:
+          - 3.11.0-rc.2
           - '3.10'
+          - '3.9'
+          - '3.8'
           - '3.7'
     steps:
       - uses: actions/checkout@v3

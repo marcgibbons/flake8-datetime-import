@@ -53,7 +53,7 @@ build = [
 ]
 test = [
     "pytest-cov==4.1.0",
-    "pytest==7.4.2",
+    "pytest==7.4.3",
 ]
 
 [build-system]

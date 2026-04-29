@@ -90,3 +90,38 @@ def test_DTI201_import_time_not_as_tm(code):
 def test_import_time_as_tm():
     result = run_plugin("import time as tm")
     assert result == set()
+
+
+@pytest.mark.parametrize(
+    "code",
+    [
+        "from .datetime import foo",
+        "from ..datetime import foo",
+        "from .time import foo",
+        "from ..time import foo",
+    ],
+)
+def test_relative_imports_not_flagged(code):
+    assert run_plugin(code) == set()
+
+
+@pytest.mark.parametrize(
+    "code",
+    [
+        "from foo.datetime import bar",
+        "from foo.time import bar",
+        "from pkg.subpkg.datetime import bar",
+    ],
+)
+def test_nested_package_imports_not_flagged(code):
+    assert run_plugin(code) == set()
+
+
+def test_combined_import_flags_both():
+    result = run_plugin("import datetime, time")
+    assert result == {
+        "1:0 DTI101 `datetime` imported without aliasing as `dt`. "
+        "Expected `import datetime as dt`.",
+        "1:0 DTI201 `time` imported without aliasing as `tm`. "
+        "Expected `import time as tm`.",
+    }

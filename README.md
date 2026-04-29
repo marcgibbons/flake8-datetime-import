@@ -82,7 +82,6 @@ Other notable mentions of this importing strategy:
 
 <!-- markdownlint-disable MD013 -->
 - <https://adamj.eu/tech/2019/09/12/how-i-import-pythons-datetime-module/>
-- <https://www.atmos.albany.edu/facstaff/ktyle/pythia/foundations/_build/html/core/datetime/datetime.html>
 <!-- markdownlint-enable -->
 
 ## pre-commit

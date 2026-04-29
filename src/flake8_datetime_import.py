@@ -26,10 +26,11 @@ class Visitor(ast.NodeVisitor):
         self.problems = []
 
     def visit_ImportFrom(self, node):
-        if node.module == "datetime":
-            self.problems.append((node.lineno, node.col_offset, "DTI100"))
-        if node.module == "time":
-            self.problems.append((node.lineno, node.col_offset, "DTI200"))
+        if node.level == 0:
+            if node.module == "datetime":
+                self.problems.append((node.lineno, node.col_offset, "DTI100"))
+            if node.module == "time":
+                self.problems.append((node.lineno, node.col_offset, "DTI200"))
 
         self.generic_visit(node)
 

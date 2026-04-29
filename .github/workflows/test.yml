@@ -7,6 +7,9 @@ on:
     branches:
       - main
 
+permissions:
+  contents: read
+
 jobs:
   test:
     name: py${{ matrix.py }} / flake8 ${{ matrix.flake8 }}
@@ -47,7 +50,7 @@ jobs:
         run: uv run --no-sync pytest --cov-report=xml
 
       - name: Publish coverage report
+        if: matrix.py == '3.14' && matrix.flake8 == 'latest'
         uses: codecov/codecov-action@v6
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          verbose: true

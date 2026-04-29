@@ -1,11 +1,5 @@
 import ast
-import sys
-
-if sys.version_info < (3, 8):
-    import importlib_metadata
-else:
-    import importlib.metadata as importlib_metadata
-
+import importlib.metadata
 
 ERRORS = {
     "DTI100": (
@@ -52,7 +46,7 @@ class Visitor(ast.NodeVisitor):
 
 class Plugin:
     name = __name__
-    version = importlib_metadata.version(__name__)
+    version = importlib.metadata.version(__name__)
 
     def __init__(self, tree):
         self.tree = tree

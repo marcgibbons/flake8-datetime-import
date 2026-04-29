@@ -25,7 +25,7 @@ pip install flake8-datetime-import
 
 ## flake8 codes
 
-<!-- markdownlint-disable MD013 -->
+<!-- markdownlint-disable MD013 MD060 -->
 | Code      | Description |
 |-----------|-------------|
 | DTI100    | `from datetime import ...` is not allowed. `datetime` must be imported as a module. |
@@ -94,10 +94,10 @@ dependency to `flake8`.
 # .pre-commit-config.yml
 
 -   repo: https://github.com/pycqa/flake8
-    rev: 5.0.4
+    rev: 7.3.0
     hooks:
     -   id: flake8
         additional_dependencies: [
-          flake8-datetime-import==0.1.0,
+          flake8-datetime-import,
         ]
 ```

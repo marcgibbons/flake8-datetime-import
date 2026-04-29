@@ -9,32 +9,42 @@ on:
 
 jobs:
   test:
-    name: test ${{ matrix.py }}
+    name: py${{ matrix.py }} flake8-${{ matrix.flake8 }}
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         py:
+          - '3.14'
+          - '3.13'
+          - '3.12'
           - '3.11'
           - '3.10'
-          - '3.9'
-          - '3.8'
-          - '3.7'
+        flake8:
+          - 7.0.0    # min supported
+          - ''       # latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
 
-      - name: Setup python for test ${{ matrix.py }}
-        uses: actions/setup-python@v5
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
         with:
           python-version: ${{ matrix.py }}
 
-      - name: Install
-        run: pip install -e ".[dev,gh]"
+      - name: Sync
+        run: uv sync
+
+      - name: Pin flake8
+        if: matrix.flake8 != ''
+        run: uv pip install 'flake8==${{ matrix.flake8 }}'
 
       - name: Test
-        run: tox
+        run: uv run --no-sync pytest --cov-report=xml
 
       - name: Publish coverage report
-        uses: codecov/codecov-action@v4
+        uses: codecov/codecov-action@v6
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           verbose: true

@@ -1,6 +1,8 @@
 *.egg-info/
 .coverage
-.tox/
+.pytest_cache/
+.venv*/
+__pycache__/
 build/
 coverage.xml
 dist/

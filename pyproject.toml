@@ -1,7 +1,8 @@
 [project]
 name = "flake8-datetime-import"
 authors = [{name = "Marc Gibbons", email = "marc@marcgibbons.com"}]
-license = {text = "MIT"}
+license = "MIT"
+license-files = ["LICENSE"]
 description = "A plugin for flake8 which enforces importing `datetime as dt` and `time as tm`."
 readme = "README.md"
 keywords = [
@@ -16,59 +17,59 @@ classifiers = [
     "Environment :: Console",
     "Framework :: Flake8",
     "Intended Audience :: Developers",
-    "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
     "Programming Language :: Python",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.7",
-    "Programming Language :: Python :: 3.8",
-    "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
     "Programming Language :: Python :: 3 :: Only",
     "Topic :: Software Development :: Libraries :: Python Modules",
     "Topic :: Software Development :: Quality Assurance",
 ]
-requires-python = ">=3.7"
-dependencies = [
-    'importlib-metadata>=0.9; python_version<"3.8"',
-]
+requires-python = ">=3.10"
 
 [project.urls]
-Homepage = 'https://github.com/marcgibbons/flake8-datetime-import'
+Homepage = "https://github.com/marcgibbons/flake8-datetime-import"
+Issues = "https://github.com/marcgibbons/flake8-datetime-import/issues"
+Source = "https://github.com/marcgibbons/flake8-datetime-import"
 
 [project.entry-points."flake8.extension"]
 DTI = "flake8_datetime_import:Plugin"
 
-[project.optional-dependencies]
+[dependency-groups]
 dev = [
-    "tox",
+    "flake8",
     "pre-commit",
-]
-gh = [
-    "tox-gh"
-]
-build = [
-    "build"
-]
-test = [
-    "pytest-cov==4.1.0",
-    "pytest==7.4.3",
+    "pytest",
+    "pytest-cov",
 ]
 
 [build-system]
 requires = [
-    "setuptools>=58",
-    "setuptools_scm[toml]>=7",
+    "setuptools>=64",
+    "setuptools_scm>=8",
 ]
 build-backend = "setuptools.build_meta"
 
-
 [tool.setuptools_scm]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+py-modules = ["flake8_datetime_import"]
+
+[tool.pytest.ini_options]
+addopts = "--cov=flake8_datetime_import --cov-report=term-missing"
+
+[tool.coverage.run]
+patch = ["subprocess"]
+source_pkgs = ["flake8_datetime_import"]
 
 [tool.black]
 line-length = 79
-target-version = ["py311"]
+target-version = ["py310"]
 
 [tool.isort]
 profile = "black"

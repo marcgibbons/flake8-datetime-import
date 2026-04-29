@@ -63,7 +63,7 @@ def test_import_datetime_as_dt():
         "from time import time, sleep",
     ],
 )
-def test_DTI200_from_ime_import(code):
+def test_DTI200_from_time_import(code):
     result = run_plugin(code)
     assert result == {
         "1:0 DTI200 `from time import ...` is not allowed. "

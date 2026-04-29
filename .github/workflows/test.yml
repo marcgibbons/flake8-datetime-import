@@ -9,7 +9,7 @@ on:
 
 jobs:
   test:
-    name: py${{ matrix.py }} flake8-${{ matrix.flake8 }}
+    name: py${{ matrix.py }} / flake8 ${{ matrix.flake8 }}
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -21,8 +21,11 @@ jobs:
           - '3.11'
           - '3.10'
         flake8:
-          - 7.0.0    # min supported
-          - ''       # latest
+          - min
+          - latest
+        include:
+          - flake8: min
+            flake8-pin: 7.0.0
     steps:
       - uses: actions/checkout@v6
         with:
@@ -37,8 +40,8 @@ jobs:
         run: uv sync
 
       - name: Pin flake8
-        if: matrix.flake8 != ''
-        run: uv pip install 'flake8==${{ matrix.flake8 }}'
+        if: matrix.flake8-pin
+        run: uv pip install 'flake8==${{ matrix.flake8-pin }}'
 
       - name: Test
         run: uv run --no-sync pytest --cov-report=xml

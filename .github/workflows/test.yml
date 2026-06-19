@@ -30,7 +30,7 @@ jobs:
           - flake8: min
             flake8-pin: 7.0.0
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0
 

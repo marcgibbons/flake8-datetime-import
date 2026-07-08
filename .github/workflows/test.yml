@@ -51,6 +51,6 @@ jobs:
 
       - name: Publish coverage report
         if: matrix.py == '3.14' && matrix.flake8 == 'latest'
-        uses: codecov/codecov-action@v6
+        uses: codecov/codecov-action@v7
         with:
           token: ${{ secrets.CODECOV_TOKEN }}

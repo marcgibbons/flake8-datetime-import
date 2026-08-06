@@ -100,3 +100,28 @@ dependency to `flake8`.
           flake8-datetime-import,
         ]
 ```
+
+## Using ruff instead
+
+If you use [ruff](https://docs.astral.sh/ruff/), you can enforce the same
+convention without this plugin via
+[`flake8-import-conventions`](https://docs.astral.sh/ruff/rules/#flake8-import-conventions-icn).
+Ban `from datetime import ...` / `from time import ...` and require the `dt`
+and `tm` aliases:
+
+```toml
+# pyproject.toml
+
+[tool.ruff.lint]
+select = ["ICN"]
+
+[tool.ruff.lint.flake8-import-conventions]
+banned-from = [
+  "datetime",  # Use `import datetime as dt`, not `from datetime import ...`
+  "time",      # Use `import time as tm`, not `from time import ...`
+]
+
+[tool.ruff.lint.flake8-import-conventions.extend-aliases]
+datetime = "dt"
+time = "tm"
+```
